@@ -1,0 +1,30 @@
+<div class="card" *ngIf="cartItem">
+  
+  <div class="row  card-container p-2" >
+      <img style="height:100%" class="col-lg-2 col-sm-3 card-img-top" src="../../../assets/product.jpg" alt="Card image cap">
+  
+      <div class="col-lg-10 col-sm-9  card-body d-flex flex-wrap">
+          <div class="col-sm-3 col-xs-2 d-flex flex-column justify-content-between" style="width:300px; ">
+              <h5 class="card-title ellipsis" >{{cartItem.item.title}}</h5>
+              <p class="item-price">{{cartItem.item.price}} $</p>
+          </div>
+        
+         
+          <div class="cart-actions col-sm-9 col-xs-10 d-inline-flex align-items-center justify-content-between">     
+            <div class="qty">
+              <button class="qty-action" (click)="increaseQty()"><i class="fa fa-plus"></i></button>
+              <span class="number">{{cartItem.qty}}</span>
+              <button class="qty-action" [disabled]="cartItem.qty == 1" (click)="decreaseQty()"><i class="fa fa-minus"></i></button>
+
+            </div>
+            <div class="item-price">{{(cartItem.item.price * cartItem.qty).toFixed(2)}} $</div>
+            <div class="delete-item">
+              <button (click)="removeFromCart()"><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+        
+        </div>
+  </div>
+    
+    
+  </div>

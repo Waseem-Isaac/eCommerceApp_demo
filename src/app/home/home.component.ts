@@ -1,3 +1,4 @@
+import { CartService } from './../shared/services/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { finalize, map } from 'rxjs/operators';
 import { ProductsService } from '@app/shared/services/products.service';
@@ -15,11 +16,13 @@ export class HomeComponent implements OnInit , OnDestroy{
 
   isLoading: boolean;
   selectedCategory: any ;
+  error: boolean= false;
+
   products: any[];
   categories: any= [];
   subscription: Subscription;
 
-  constructor(private productsService: ProductsService, private toastr: ToastrService) { }
+  constructor(private productsService: ProductsService,private cartService :CartService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -46,6 +49,9 @@ export class HomeComponent implements OnInit , OnDestroy{
       
     }, (err: any) =>{
       console.log(err)
+      if(err.message == "Http failure response for (unknown url): 0 Unknown Error"){
+        this.error = true;
+      }
     })
   }
 
@@ -66,6 +72,8 @@ export class HomeComponent implements OnInit , OnDestroy{
   addToCart(product: any){
     console.log("Should toaster run")
     this.toastr.success('Item '+ product.title + ' added to cart');
+
+    this.cartService.addToCart(product)
 
   }
 

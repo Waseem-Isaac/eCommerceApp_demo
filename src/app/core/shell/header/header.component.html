@@ -1,6 +1,8 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>
+      LOGO
+    </a>
     <button class="navbar-toggler" type="button" aria-controls="navbar-menu"
             aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
       <span class="navbar-toggler-icon"></span>
@@ -11,19 +13,14 @@
           <i class="fas fa-home"></i>
           <span translate>Home</span>
         </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
-          <i class="fas fa-question-circle"></i>
-          <span translate>About</span>
+        <a class="nav-item nav-link text-uppercase" routerLink="/cart" routerLinkActive="active">
+          <i class="fas fa-shopping-cart"></i>
+          <span translate>Cart</span>
         </a>
       </div>
       <div class="navbar-nav ml-auto">
         <div class="nav-item" ngbDropdown placement="bottom-right">
-          <a id="language-dropdown" class="nav-link" ngbDropdownToggle>{{currentLanguage}}</a>
-          <div ngbDropdownMenu aria-labelledby="language-dropdown">
-            <button class="dropdown-item" *ngFor="let language of languages" (click)="setLanguage(language)">
-              {{language}}
-            </button>
-          </div>
+          <div class="cartLabel"> <span>{{cartService.calculateitemsTotal()}} $</span> <i class="fa fa-shopping-cart"></i></div>
         </div>
       </div>
     </div>

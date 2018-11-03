@@ -1,3 +1,4 @@
+import { CartService } from './../../../shared/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 
 import { I18nService } from '../../i18n.service';
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   menuHidden = true;
 
-  constructor(private i18nService: I18nService) { }
+  constructor(private i18nService: I18nService, public cartService:CartService) { }
 
   ngOnInit() { }
 

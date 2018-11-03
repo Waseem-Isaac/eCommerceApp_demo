@@ -1,0 +1,13 @@
+.card {
+  max-height: 320px
+}
+
+button.list-group-item:enabled {
+  cursor: pointer ;
+}
+
+@media(max-width: 992px){
+  .products {
+    justify-content: center
+  }
+}

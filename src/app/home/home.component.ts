@@ -5,6 +5,7 @@ import { ProductsService } from '@app/shared/services/products.service';
 import { Subscription } from 'rxjs';
 import * as _ from 'lodash'
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '@app/shared/services/authentication/auth.service';
 
 
 @Component({
@@ -69,37 +70,6 @@ export class HomeComponent implements OnInit , OnDestroy{
       .subscribe()
   }
 
-  addToCart(product: any){
-    console.log("Should toaster run")
-    this.toastr.success('Item '+ product.title + ' added to cart');
 
-    this.cartService.addToCart(product)
-
-  }
-
-
-  //
-  getItemFromCart(product: any){
-    for (let i = 0; i < this.cartService.cart.length; i++) {
-      const element = this.cartService.cart[i];
-      if(element.id == product.objectId) {
-         return element;
-        }
-    }
-    return 0
-  }
-
-  increaseQty(product: any){
-    this.cartService.increaseQty(product)
-  }
-  decreaseQty(product: any){
-    console.log(product)
-    if (product.qty == 1){
-      this.cartService.removeFromCart(product)
-    }else{
-      this.cartService.decreaseQty(product)
-
-    }
-  }
 
 }

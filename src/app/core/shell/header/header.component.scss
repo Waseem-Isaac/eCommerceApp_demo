@@ -2,6 +2,7 @@
 
 .navbar {
   margin-bottom: $spacer;
+  height: 60px
 }
 
 .nav-link.dropdown-toggle {
@@ -9,19 +10,23 @@
 }
 
 .cartLabel {
-  border: 1px solid #fff;
-  border-radius: 20px;
+//   border: 1px solid #fff;
+//   border-radius: 20px;
  
 
-  width: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+//   width: 120px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
 
- padding: 5px 10px;
- font-weight: 900;
+//  padding: 5px 10px;
+//  font-weight: 900;
 
- background: #fff;
- color: $main-color
+//  background: #fff;
+//  color: $main-color;
+
+ margin: 0 20px;
+ cursor: auto !important;
+ border-radius: 20px
 
 }

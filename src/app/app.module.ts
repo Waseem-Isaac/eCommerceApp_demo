@@ -15,6 +15,12 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// const Parse = require('parse');
+// declare var require: any;
+
+// Parse.initialize("APPLICATION_ID", "MASTER_KEY");
+
+
 @NgModule({
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+<div class="page">
+   <div class="d-flex flex-column align-items-center">
+      <div class="head m-3">
+          <h1 class="display-4">Register</h1>
+          <!-- <p class="lead">Using Parse Platform</p> -->
+      </div>
+      <form class="card text-white bg-secondary mb-3 mr-2 ml-2 form" style="width: 400px" (ngSubmit)="register()" [formGroup]="registerForm" novalidate>
+          <div class="card-body">
+              <div class="form-group">
+                  <label for="Name">Name</label>
+                  <input type="text" class="form-control" id="Name" aria-describedby="nameHelp" formControlName="username" placeholder="Enter Name">
+                  <ng-container *ngIf="registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)">
+                      <small *ngIf="registerForm.controls.username.errors?.required"  id="nameHelp" class="form-text text-danger error">Name field is required</small>
+                  </ng-container>
+
+              </div>
+
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <ng-container *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)">
+                      <small *ngIf="registerForm.controls.email.errors?.required"  id="emailHelp" class="form-text text-danger error">Email filed is required</small>
+                      <small *ngIf="registerForm.controls.email.errors?.pattern"  id="emailHelp" class="form-text text-danger error">Wrong email format</small>
+
+                  </ng-container>
+              </div>
+
+              <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input type="password" class="form-control" id="Password" formControlName="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                  <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+                  <ng-container *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+                      <small *ngIf="registerForm.controls.password.errors?.required"  id="passwordHelp" class="form-text text-danger error">Password field is required</small>
+                      <small *ngIf="registerForm.controls.password.errors?.minlength"  id="passwordHelp" class="form-text text-danger error">MinLength</small>
+
+                  </ng-container>
+              </div>
+
+
+
+              <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="cart-footer" >
+
+          </div>
+        </form>
+        <div>
+            Have an account ? <a routerLink="/auth/login" href="javascript:void(0)">login</a>
+        </div>
+      </div>
+</div>

@@ -4,23 +4,25 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-import { ProductComponent } from './product/product.component';
+
+import { AuthRoutingModule } from './auth-routing.module';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
-    CoreModule,
     SharedModule,
-    HomeRoutingModule
+    ReactiveFormsModule,
+    AuthRoutingModule
   ],
   declarations: [
-    HomeComponent,
-    ProductComponent
+    RegisterComponent,
+    LoginComponent
   ],
   providers: [
   ]
 })
-export class HomeModule { }
+export class AuthModule { }

@@ -19,9 +19,34 @@
         </a>
       </div>
       <div class="navbar-nav ml-auto">
-        <div class="nav-item" ngbDropdown placement="bottom-right">
-          <div class="cartLabel"> <span>{{cartService.calculateitemsTotal()}} $</span> <i class="fa fa-shopping-cart"></i></div>
+          <a *ngIf="authService.isAdmin()" class="nav-item nav-link text-uppercase" routerLink="/dashboard" routerLinkActive="active">
+            <i class="fas fa-home"></i>
+            <span translate>Dashboard</span>
+          </a>
+
+
+        <div  class="nav-item" ngbDropdown placement="bottom-right">
+          <div class="cartLabel btn btn-info"> <span>{{cartService.calculateitemsTotal()}} $</span> <i class="fa fa-shopping-cart"></i></div>
         </div>
+       
+        <li class="nav-item" >
+
+            <div ngbDropdown placement="bottom-right">
+            <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>
+                {{authService.isAuthenticated()? 'Logged in as ' +user.username : 'join' }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <ng-container *ngIf="!authService.isAuthenticated(); else authenticated">
+                  <a class="dropdown-item" routerLink="/auth/login" routerLinkActive="active">Login</a>
+                  <a class="dropdown-item" routerLink="/auth/register" routerLinkActive="active">Register</a>
+              </ng-container>
+              <ng-template #authenticated>
+                  <button class="dropdown-item" (click)="logOut()">Logout</button>
+              </ng-template>
+
+            </div>
+          </div>
+        </li>
       </div>
     </div>
   </nav>

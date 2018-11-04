@@ -1,11 +1,11 @@
 <div class="page container-fluid">
 
   <div class="jumbotron ">
-   <div> <h1 class="display-4">E-Commerce App</h1>
+   <div> 
+     <h1 class="display-4">E-Commerce App</h1>
     <p class="lead">Using Parse Platform</p></div>
   </div>
 
-  
   <div *ngIf="error" class="alert alert-danger">Something went wrong , Please check your enternet connection</div>
   <div class="row" >
     <div class="col-lg-2 col-sm-4 ">
@@ -35,31 +35,8 @@
         <!-- <div class="d-flex justify-content-center align-items-center w-100" *ngIf="isLoading">
             <app-loader [isLoading]="isLoading"></app-loader>
         </div> -->
-        <div class="card text-white bg-secondary mb-3 mr-2 ml-2" style="width: 15rem;" *ngFor="let product of products">
-            <div class="card-header " >
-                <img src="../../assets/product.jpg" class="w-100" >
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">{{product.title}}</h4>
-              <div class="card-text">
-                <div class="badge badge-pill badge-primary">{{product.price }} $</div>
-              </div>
-            </div>
-            <div class="cart-footer" >
-                <button *ngIf="!cartService.checkExist(product) || getItemFromCart(product).qty < 1" type="button" class="btn btn-primary btn-block " (click)="addToCart(product)">Add to Cart</button>
-
-                <div *ngIf="cartService.checkExist(product) && getItemFromCart(product).qty > 0 " class="d-flex align-items-center justify-content-between">
-                  <button   type="button" class="btn btn-light btn-lg p-0 w-25 action-btn" (click)="increaseQty(getItemFromCart(product))">
-                    <i class="fa fa-plus"></i>
-                  </button>
-
-                  <div>{{getItemFromCart(product).qty > 0? getItemFromCart(product).qty  : 0 }} in cart</div>
-
-                  <button type="button" class="btn btn-light p-0 w-25 action-btn" (click)="decreaseQty(getItemFromCart(product))">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </div>
-            </div>
+        <div *ngFor="let product of products">
+            <app-product [product]="product"></app-product>
         </div>
     </div>
   </div>

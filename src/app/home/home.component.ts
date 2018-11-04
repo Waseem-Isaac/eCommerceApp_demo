@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit , OnDestroy{
   categories: any= [];
   subscription: Subscription;
 
-  constructor(private productsService: ProductsService,private cartService :CartService, private toastr: ToastrService) { }
+  constructor(private productsService: ProductsService,public cartService :CartService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -77,5 +77,29 @@ export class HomeComponent implements OnInit , OnDestroy{
 
   }
 
+
+  //
+  getItemFromCart(product: any){
+    for (let i = 0; i < this.cartService.cart.length; i++) {
+      const element = this.cartService.cart[i];
+      if(element.id == product.objectId) {
+         return element;
+        }
+    }
+    return 0
+  }
+
+  increaseQty(product: any){
+    this.cartService.increaseQty(product)
+  }
+  decreaseQty(product: any){
+    console.log(product)
+    if (product.qty == 1){
+      this.cartService.removeFromCart(product)
+    }else{
+      this.cartService.decreaseQty(product)
+
+    }
+  }
 
 }

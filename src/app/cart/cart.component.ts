@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   version: string = environment.version;
   cart:any = [];
 
-  constructor(private cartService : CartService) { }
+  constructor(public cartService : CartService) { }
 
   ngOnInit() { 
     this.loadcart();

@@ -45,9 +45,20 @@
                 <div class="badge badge-pill badge-primary">{{product.price }} $</div>
               </div>
             </div>
-            <div class="cart-footer">
-                <button type="button" class="btn btn-primary btn-block" (click)="addToCart(product)">Add to Cart</button>
+            <div class="cart-footer" >
+                <button *ngIf="!cartService.checkExist(product) || getItemFromCart(product).qty < 1" type="button" class="btn btn-primary btn-block " (click)="addToCart(product)">Add to Cart</button>
 
+                <div *ngIf="cartService.checkExist(product) && getItemFromCart(product).qty > 0 " class="d-flex align-items-center justify-content-between">
+                  <button   type="button" class="btn btn-light btn-lg p-0 w-25 action-btn" (click)="increaseQty(getItemFromCart(product))">
+                    <i class="fa fa-plus"></i>
+                  </button>
+
+                  <div>{{getItemFromCart(product).qty > 0? getItemFromCart(product).qty  : 0 }} in cart</div>
+
+                  <button type="button" class="btn btn-light p-0 w-25 action-btn" (click)="decreaseQty(getItemFromCart(product))">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
             </div>
         </div>
     </div>

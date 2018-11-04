@@ -1,11 +1,13 @@
 <div class="page">
-   <div class="d-flex flex-column align-items-center">
-      <div class="head m-3">
+   <div class="d-flex flex-column align-items-center pt-5">
+      <!-- <div class="head m-3">
           <h1 class="display-4">Register</h1>
-          <!-- <p class="lead">Using Parse Platform</p> -->
-      </div>
+      </div> -->
       <form class="card text-white bg-secondary mb-3 mr-2 ml-2 form" style="width: 400px" (ngSubmit)="register()" [formGroup]="registerForm" novalidate>
-          <div class="card-body">
+            <div class="card-header">
+                    <h1 class="display-4">Register</h1>
+            </div>   
+            <div class="card-body">
               <div class="form-group">
                   <label for="Name">Name</label>
                   <input type="text" class="form-control" id="Name" aria-describedby="nameHelp" formControlName="username" placeholder="Enter Name">

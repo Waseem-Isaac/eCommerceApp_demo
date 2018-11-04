@@ -1,13 +1,51 @@
 <div class="page container-fluid">
 
   <div class="jumbotron ">
-   <div> 
-     <h1 class="display-4">admin dashborad</h1>
-    <p class="lead">Using Parse Platform</p></div>
+    <div>
+      <h1 class="display-4">admin dashborad</h1>
+      <p class="lead">Using Parse Platform</p>
+    </div>
   </div>
 
   <div *ngIf="error" class="alert alert-danger">Something went wrong , Please check your enternet connection</div>
- 
+  
+  
+  <div class="container">
+      <div class="d-flex justify-content-end mb-2">
+          <button class="btn btn-primary" (click)="addProduct()"><i class="fa fa-plus"></i> Add product</button>
+      </div>
+      <div class="table-responsive-md">
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">title</th>
+              <th scope="col">category</th>
+              <th scope="col">price</th>
+              <th scope="col">stars</th>
+              <th scope="col">actions</th>
+    
+            </tr>
+          </thead>
+          <tbody *ngIf="!isLoading">
+            <tr *ngFor="let product of products">
+              <th scope="row">{{product.objectId}}</th>
+              <td>{{product.title}}</td>
+              <td>{{product.category}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.stars}}</td>
+    
+              <td class="actions">
+                <button class="btn btn-primary" (click)="showProduct(product)"><i class="fa fa-eye"></i></button>
+                <button class="btn btn-primary" (click)="editProduct(product)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-primary" (click)="removeProduct(product)"><i class="fa fa-trash"></i></button>
+    
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
 </div>
 
 

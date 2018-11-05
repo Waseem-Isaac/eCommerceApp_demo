@@ -10,6 +10,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from '@app/app.module';
 import { environment } from '@env/environment';
 
+const Parse = require('parse');
+declare var require: any;
+
+Parse.initialize("APPLICATION_ID" ,"MASTER_KEY");
+Parse.serverURL = 'http://localhost:1337/parse/'
+
 if (environment.production) {
   enableProdMode();
 }

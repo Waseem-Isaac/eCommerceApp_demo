@@ -5,7 +5,10 @@ import * as _ from 'lodash'
 
 @Injectable({providedIn: 'root'})
 export class ProductsService {
-     headers = new HttpHeaders({'X-Parse-Application-Id' : 'APPLICATION_ID'});
+     headers = new HttpHeaders(
+         {
+            'X-Parse-Application-Id' : 'APPLICATION_ID'
+        });
 
     
     constructor(private httpClient: HttpClient) {

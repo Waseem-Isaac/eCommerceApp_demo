@@ -1,12 +1,15 @@
+
+
 <div class="page container-fluid">
 
-  <div class="jumbotron ">
-   <div> 
-     <h1 class="display-4">E-Commerce App</h1>
-    <p class="lead">Using Parse Platform</p></div>
+  <div class="jumbotron">
+    <div> 
+      <h1 class="display-4">E-Commerce App</h1>
+      <p class="lead">Using Parse Platform</p>
+    </div>
   </div>
 
-  <div *ngIf="error" class="alert alert-danger">Something went wrong , Please check your enternet connection</div>
+  <div *ngIf="error" class="alert alert-danger p-5">Something went wrong , Please check your enternet connection</div>
   <div class="row" >
     <div class="col-lg-2 col-sm-4 ">
       <div class="list-group mb-4" *ngIf="categories.length > 0">

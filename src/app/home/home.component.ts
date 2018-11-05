@@ -57,17 +57,11 @@ export class HomeComponent implements OnInit , OnDestroy{
   }
 
   getCategories(){
-    this.subscription = this.productsService.filterProducts()
-    .pipe(
-      map((res: any) => {
-        res.results.forEach((product: any) => {
-          this.categories.push(product.category);
-          this.categories = _.uniq(this.categories)
-        });
-        return res
-      }),
-      )
-      .subscribe()
+    this.subscription = this.productsService.getCategories()
+    .subscribe((res: any) => {
+      console.log(res);
+      this.categories = res
+    })
   }
 
 

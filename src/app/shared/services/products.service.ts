@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import * as _ from 'lodash'
 
 @Injectable({providedIn: 'root'})
 export class ProductsService {
@@ -21,6 +23,20 @@ export class ProductsService {
        }
     }
 
+
+    //
+    getCategories(){
+        var categories: any = []
+        return this.httpClient.get('/classes/products' , {headers : this.headers}).pipe(
+            map((res :any) => {
+                res.results.forEach((product: any) => {
+                    categories.push(product.category);
+                    categories = _.uniq(categories)
+                    });
+                return categories
+            })
+        );
+    }
 
     
 }

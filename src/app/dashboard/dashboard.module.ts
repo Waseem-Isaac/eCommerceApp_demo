@@ -10,6 +10,7 @@ import { RemoveProductComponent } from './remove-product/remove-product.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowProductComponent } from './show-product/show-product.component';
 import { producFormComponent } from './add-product/product-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { producFormComponent } from './add-product/product-form.component';
     CommonModule,
     TranslateModule,
     SharedModule,
+    ReactiveFormsModule,
     NgbModule,
     DashboardRoutingModule
   ],

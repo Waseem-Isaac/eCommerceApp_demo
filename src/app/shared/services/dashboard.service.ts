@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class DashboardService {
+    headers = new HttpHeaders({'X-Parse-Application-Id' : 'APPLICATION_ID'});
+
     constructor(private httpClient: HttpClient) { }
 
 
 
     addProduct(product: any){
-        console.log(product)
+        return this.httpClient.post("/classes/products" ,product, {headers : this.headers});
     }
 
-    editProduct(product: any){
-        console.log(product);
-
+    editProduct(edittedProduct: any, productId: any){
+        return this.httpClient.put("/classes/products/"+productId ,edittedProduct, {headers : this.headers});
     }
 
-    removeProduct(product :any){
-        console.log(product)
+    removeProduct(productId :any){
+        return this.httpClient.delete("/classes/products/"+productId , {headers : this.headers});
     }
     
 }

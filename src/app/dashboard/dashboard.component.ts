@@ -63,15 +63,45 @@ export class DashboardComponent implements OnInit , OnDestroy{
 
   addProduct(){
     const modalRef = this.modalService.open(producFormComponent);
+
+    modalRef.result.then((res: any) => {
+      if(res){
+        console.log(res)
+        this.products.push(res)
+      }
+    },(reason: any) => {
+      console.log("Dismmissed", reason)
+    });
   }
 
   editProduct(product: any){
     const modalRef = this.modalService.open(producFormComponent);
     modalRef.componentInstance.product = product;
+
+    let index = this.products.indexOf(product);
+    modalRef.result.then((res: any) => {
+      if(res){
+        res['objectId'] = product.objectId;
+        console.log(res);
+        this.products[index] = res
+      }
+    },(reason: any) => {
+      console.log("Dismmissed", reason)
+    });
   }
 
   removeProduct(product : any){
     const modalRef = this.modalService.open(RemoveProductComponent);
     modalRef.componentInstance.product = product;
+
+    modalRef.result.then((res: any) => {
+      if(res){
+        console.log(res)
+        let index = this.products.indexOf(res);
+        this.products.splice(index, 1)
+      }
+    }, (reason: any) => {
+      console.log("Dismmissed")
+    });
   }
 }
